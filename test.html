@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+emailjs.init({
+  publicKey: "nowSj9JnTDWhSMmXI",
+});
+})();
+</script>
+</head>
+<body>
+  <div class="bg-white">
+    <h1 class="text-4xl font-bold tracking-tight text-indigo-600 sm:text-4xl text-center">Subscribe</h1>
+    <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-20 lg:px-8">
+      <div class="relative isolate overflow-hidden bg-gray-900 bg-opacity-90 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-34 lg:pt-0">
+        
+        <!-- Black Overlay with 50% Opacity -->
+        <div class="absolute inset-0 bg-black opacity-50 z-0"></div>
+        
+        <div class="relative z-10 mx-auto text-center lg:flex-auto lg:py-52 lg:text-center">
+          <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+              <div class="max-w-xl lg:max-w-lg">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Subscribe to our newsletter.</h2>
+                <p class="mt-4 text-lg leading-8 text-gray-300">Stay updated with the latest news, trends, and exclusive content delivered straight to your inbox, and more.</p>
+                <div class="mt-6 flex flex-col gap-y-4 max-w-md">
+                  
+                  <!-- First Name Input -->
+                  <label for="first-name" class="sr-only">Full Name</label>
+                  <input id="first-name" name="full-name" type="text" required class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6" placeholder="Enter your first name">
+                  
+                  <!-- Email Input -->
+                  <label for="email-address" class="sr-only">Email address</label>
+                  <input id="email-address" name="email" type="email" autocomplete="email" required class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6" placeholder="Enter your email">
+                  
+                  <!-- Message Input -->
+                  <label for="message" class="sr-only">Message</label>
+                  <textarea id="message" name="message" rows="4" class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6" placeholder="Enter your message"></textarea>
+
+                  <!-- Submit Button -->
+                  <button id="submit-button" class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" onclick="sendMail()">Subscribe</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Code -->
+  <script type="text/javascript">
+    function sendMail() {
+      var params = {
+        name: document.getElementById("first-name").value,
+        email: document.getElementById("email-address").value,
+        message: document.getElementById("message").value,
+      };
+
+      const serviceID = "service_i77m8tp"; // Replace with your EmailJS service ID
+      const templateID = "template_ak5v2hg"; // Replace with your EmailJS template ID
+
+      emailjs.send(serviceID, templateID, params)
+        .then(res => {
+          document.getElementById("first-name").value = "";
+          document.getElementById("email-address").value = "";
+          document.getElementById("message").value = "";
+          alert("Your message sent successfully!");
+        })
+        .catch(err => console.log(err));
+    }
+  </script>
+
+</body>
+</html>

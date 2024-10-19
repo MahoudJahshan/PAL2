@@ -1,0 +1,283 @@
+
+/* Video styles to make it cover the entire background */
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2; /* Keep the video behind the content */
+  }
+  /* css slider */
+  .slider{
+    height: 100vh;
+    margin-top: -50px;
+    position: relative;
+  }
+  .slider .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s;
+  }
+  .slider .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .slider .list .item::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        to top, #151515 20%, transparent
+    );
+  }
+  .slider .list .item .content{
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    width: 500px;
+    max-width: 80%;
+    z-index: 1;
+  }
+  .slider .list .item .content p:nth-child(1){
+    text-transform: uppercase;
+    letter-spacing: 10px;
+  }
+  .slider .list .item .content h2{
+    font-size: 100px;
+    margin: 0;
+  }
+  .slider .list .item.active{
+    opacity: 1;
+    z-index: 10;
+  }
+  @keyframes showContent {
+    to{
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+  }
+  .slider .list .item.active p:nth-child(1),
+  .slider .list .item.active h2,
+  .slider .list .item.active p:nth-child(3){
+    transform: translateY(30px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s .7s ease-in-out 1 forwards;
+  }
+  .slider .list .item.active h2{
+    animation-delay: 1s;
+  }
+  .slider .list .item.active p:nth-child(3){
+    animation-duration: 1.3s;
+  }
+  .arrows{
+    position: absolute;
+    top: 30%;
+    right: 50px;
+    z-index: 100;
+  }
+  .arrows button{
+    background-color: #eee5;
+    border: none;
+    font-family: monospace;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: x-large;
+    color: #eee;
+    transition: .5s;
+  }
+  .arrows button:hover{
+    background-color: #eee;
+    color: black;
+  }
+  .thumbnail{
+    position: absolute;
+    bottom: 50px;
+    z-index: 11;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 250px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    overflow: auto;
+    justify-content: center;
+  }
+  .thumbnail::-webkit-scrollbar{
+    width: 0;
+  }
+  .thumbnail .item{
+    width: 150px;
+    height: 220px;
+    filter: brightness(.5);
+    transition: .5s;
+    flex-shrink: 0;
+  }
+  .thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .thumbnail .item.active{
+    filter: brightness(1.5);
+  }
+  .thumbnail .item .content{
+    position: absolute;
+    inset: auto 10px 10px 10px;
+  }
+  @media screen and (max-width: 678px) {
+    .thumbnail{
+        justify-content: start;
+    }
+    .slider .list .item .content h2{
+        font-size: 60px;
+    }
+    .arrows{
+        top: 10%;
+    }
+  }
+  /*hero*/
+  
+  
+  
+  /*******************************/
+  /********** Facts CSS **********/
+  /*******************************/
+  /* Remove space between sections */
+  /* Remove space between sections */
+  
+  
+  /* Facts Section */
+  .facts {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    background: #ffffff;
+    padding: 40px 0;
+  }
+  
+  /* Facts Items Container */
+  .facts-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow items to wrap */
+    max-width: 1400px; /* Restrict width for large screens */
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  /* Facts Item */
+  .facts .facts-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Stack icon and text vertically */
+    margin: 15px; /* Small margin for spacing */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 22%; /* Flex size: 22% width, room to grow */
+    max-width: 25%; /* Ensure max width for large screens */
+    text-align: center; /* Center the text */
+  }
+  
+  .facts .facts-item:hover {
+    transform: translateY(-5px); /* Slight hover effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Icon Styling */
+  .facts .facts-item i {
+    font-size: 50px;
+    color: #fb6400;
+    margin-bottom: 15px; /* Space between icon and text */
+  }
+  
+  /* Counter Text */
+  .facts .facts-text h3 {
+    color: #000000;
+    font-size: 50px;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  /* Caption Text */
+  .facts .facts-text p {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0 0;
+  }
+  
+  /* Responsive Design */
+  
+  /* Medium Screens (Tablets) */
+  @media (max-width: 991px) {
+    .facts .facts-item {
+        flex: 1 1 45%; /* Two items per row */
+        max-width: 48%;
+    }
+    
+    .facts .facts-text h3 {
+        font-size: 40px; /* Smaller font size for medium screens */
+    }
+    
+    .facts .facts-item i {
+        font-size: 40px; /* Smaller icon for tablets */
+    }
+  }
+  
+  /* Small Screens (Mobile) */
+  @media (max-width: 575px) {
+    .facts .facts-item {
+        flex: 1 1 100%; /* Full width for each item */
+        max-width: 100%;
+    }
+  
+    .facts .facts-text h3 {
+        font-size: 35px; /* Smaller font for mobile */
+    }
+  
+    .facts .facts-item i {
+        font-size: 35px; /* Smaller icon for mobile */
+    }
+  
+    .facts .facts-item {
+        margin: 10px 0; /* Reduced margin for smaller screens */
+    }
+  }
+  
+
+
+
+/*qaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+
+
+                      /* Hide content by default */
+                      .content {
+                        display: none;
+                    }
+                    /* Show content when active */
+                    .active .content {
+                        display: block;
+                    }
+
+
+  
